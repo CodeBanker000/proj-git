@@ -7,7 +7,7 @@ jobs:
 
   test:
     # ambiente siamo -> sis.op
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       # scarica il codice
