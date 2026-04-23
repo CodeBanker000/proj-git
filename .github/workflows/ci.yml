@@ -1,0 +1,29 @@
+name: Esempio di validazione
+
+# quando deve partire l'automazione
+on: [push]
+
+jobs:
+
+  test:
+    # ambiente siamo -> sis.op
+    runs_on: ubuntu-latest
+
+    steps:
+      # scarica il codice
+      - name: scarica codice dal repo
+        uses: actions/checkout@v4
+
+      - name: Installa Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installa dipendenze
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Esegui test
+        run: |
+          pytest --cov=. --cov-branch --cov-report=term-missing
